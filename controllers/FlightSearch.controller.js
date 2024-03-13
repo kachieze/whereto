@@ -87,6 +87,8 @@ class FlightSearch {
     };
 
     validateData = (value, dataType, name) => {
+        // method used to validate user-input.
+        // the ideal solution would be to use a validation library. e.g Joi
         if (!value || typeof value !== dataType) ApiError(400, `${name} is required and must be ${dataType}`)
     };
 
