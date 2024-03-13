@@ -1,9 +1,7 @@
 import express from 'express';
 
 // controller
-import FlightSearch from './controllers/FlightSearch.controller';
-
-const flightSearchController = new FlightSearch();
+import flightSearchController from './controllers/FlightSearch.controller';
 
 const router = express.Router();
 

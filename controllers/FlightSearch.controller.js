@@ -7,6 +7,8 @@ const ApiError = (statusCode, message) => {
 };
 
 class FlightSearch {
+    distances = {};
+
     constructor(){};
 
     // workers - ideally these would be in an external service
@@ -44,8 +46,13 @@ class FlightSearch {
     getDistanceBetweenAirports = async (code1, code2) => {
         // perform measurement and return a number
         // i would store the results in memory, to be re-used for subsequent calls
+        const key = `${code1}-${code2}`;
+        if (this.distances[key]) return this.distances[key];
 
-        return 575; // mock number
+        // mock random number
+        this.distances[key] = Math.floor(Math.random() * (500 - 200 + 1)) + 200;
+
+        return  this.distances[key]
     };
 
     searchFlightSchedules = async (from, to) => {
@@ -138,4 +145,8 @@ class FlightSearch {
     };
 
 }
-export default FlightSearch;
+
+// initialize controller
+const flightSearchController = new FlightSearch();
+
+export default flightSearchController;
